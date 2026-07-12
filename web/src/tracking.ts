@@ -63,10 +63,12 @@ function vehiclePopup(props: Record<string, any>) {
     mount(content, el('p', `Tracker ${props.deviceName}`))
   }
   if (props.battery != null) {
-    mount(content, el('p', `Battery ${props.battery}%`))
+    const batteryPct = Math.round(props.battery * 10) / 10
+    mount(content, el('p', `Battery ${batteryPct}%`))
   }
   if (props.temperature != null) {
-    mount(content, el('p', `Temperature ${props.temperature}°C`))
+    const tempC = Math.round(props.temperature * 10) / 10
+    mount(content, el('p', `Temperature ${tempC}°C`))
   }
   const lastSeen = lastSeenLine(props)
   if (lastSeen) mount(content, lastSeen)
